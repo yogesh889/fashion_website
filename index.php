@@ -1,6 +1,6 @@
 
 
-<?php $curr_page = "home"; ?>
+<?php $current_page = "home"; ?>
 
 
 <?php require_once('includes/head_section.php') ?>
