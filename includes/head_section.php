@@ -1,4 +1,5 @@
 <?php ob_start(); ?>
+<?php session_start(); ?>
 
 <!-- The first include should be db.php -->
 <?php require_once("./includes/db.php"); ?>
