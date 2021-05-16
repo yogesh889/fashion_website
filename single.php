@@ -66,18 +66,69 @@
                     <h2 class="mb-0">Comments</h2>
                 </div>
                 <hr class="mb-4" />
-                <div class="card mb-5">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="mr-2 text-dark">
-                            John Doe
-                            <div class="text-xs text-muted">November 19, 2020 at 11:31 PM</div>
-                        </div>
-                        <div class="h5"><span class="badge badge-warning-soft text-warning font-weight-normal">Awaiting Response</span></div>
-                    </div>
-                    <div class="card-body">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque blanditiis, exercitationem architecto accusamus quis repellendus magni nam ipsam id qui non itaque eos, consectetur maiores aperiam sapiente. Libero, possimus minus.                                  
-                    </div>
-                </div>
+                <?php
+                    $sql = "SELECT * FROM comments WHERE com_status = :status AND com_post_id = :id";
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([
+                        ':status' => 'approved',
+                        ':id' => $_GET['post_id']
+                    ]);
+                    $count = $stmt->rowCount();
+                    if($count == 0){
+                        echo "no comments";
+                    } else {
+                        $sql1 = "SELECT * FROM comments WHERE com_post_id = :id";
+                        $stmt1 = $pdo->prepare($sql1);
+                        $stmt1->execute([
+                            ':id' => $_GET['post_id']
+                        ]);
+                        while($comments = $stmt1->fetch(PDO:: FETCH_ASSOC)){
+                            $user_name = $comments['com_user_name'];
+                            $com_date = $comments['com_date'];
+                            $com_detail = $comments['com_detail'];
+                            $com_status = $comments['com_staus'];
+                            $com_user_id = $comments['com_user_id']; 
+
+                            if(isset($_SESSION['user_id'])){
+                                $signed_in_user_id = $_SESSION['user_id'];
+                            } else if(isset($_COOKIE['_uid_'])) {
+                                $signed_in_user_id = base64_decode($_COOKIE['_uid_']);
+                            } else {
+                                $signed_id_user_id = -1;
+                            }
+
+                            if($comment_status == 'unapproved' && $com_user_id == $signed_in_user_id ) { ?>
+                                <div class="card mb-5">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <div class="mr-2 text-dark">
+                                            <?php echo $user_name; ?>
+                                            <div class="text-xs text-muted"><?php echo $com_date; ?></div>
+                                        </div>
+                                        <div class="h5"><span class="badge badge-warning-soft text-warning font-weight-normal">Awaiting Response</span></div>
+                                    </div>
+                                    <div class="card-body">
+                                        <?php echo $com_detail; ?>                                 
+                                    </div>
+                                </div>
+                            <?php } else if($com_status == 'approved') { ?>
+                                <div class="card mb-5">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <div class="mr-2 text-dark">
+                                            <?php echo $user_name; ?>
+                                            <div class="text-xs text-muted"><?php echo $com_date; ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <?php echo $com_detail; ?>                                 
+                                    </div>
+                                </div>
+                            <?php }
+                            ?>
+                            
+                        <?php }
+                    }
+                ?>
+                
                 <?php 
                     if(isset($_COOKIE['_uid_']) || isset($_COOKIE['_uiid_']) || isset($_SESSION['login'])) { ?>
                         <div class="card">
