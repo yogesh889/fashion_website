@@ -3,7 +3,7 @@
 
 <?php
     if(isset($_SESSION['login']) || isset($_COOKIE['_uid_']) || isset($_COOKIE['_uiid_'])) {
-        header("location: ../index.php");
+        header("location: {$curr_page}");
     }
 ?>
 

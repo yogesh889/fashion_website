@@ -46,7 +46,7 @@
                     }
 
                     if(isset($_SESSION['login'])) { ?>
-                        <form action="signout.php" method="POST">
+                        <form action="<?php echo $curr_page; ?>" method="POST">
                             <button class="btn-teal btn rounded-pill px-4 ml-lg-4">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
                         </form>
                     <?php } else {
