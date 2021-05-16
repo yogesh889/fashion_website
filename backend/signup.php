@@ -1,10 +1,10 @@
 <?php session_start(); ?>
 
 <?php require_once("../includes/db.php"); ?>
-
+$cpage = $_POST['cpagesup'];
 <?php
     if(isset($_SESSION['login']) || isset($_COOKIE['_uid_']) || isset($_COOKIE['_uiid_'])) {
-        header("location: ../index.php");
+        header("Location: ../$cpage");
     }
 ?>
 
@@ -95,6 +95,7 @@
                                                     echo "<p class='alert alert-success'>
                                                             Account created successfully. <a href='signin.php'>Sign in now</a>
                                                           </p>";
+                                                          header("Location: ../$cpage");
                                                 }
                                             ?>
                                             <div class="form-row">
