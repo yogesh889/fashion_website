@@ -1,6 +1,9 @@
 
 <link href=".//css/style_1.css" rel="stylesheet" type="text/css"/>
-
+<style>
+#element1 {display:inline-block; width:auto; } 
+#element2 {display:inline-block; width:auto; } 
+</style>
 
 <div class="container-fluid">
     <div class="container">
@@ -46,13 +49,23 @@
                     }
 
                     if(isset($_SESSION['login'])) { ?>
-                        <form action="signout.php" method="POST">
+                        <form action="../lalit_fashion_website/signout.php" method="POST">
+                            <input type="text" name="cpage" value="<?php echo $curr_page; ?>" hidden>
                             <button class="btn-teal btn rounded-pill px-4 ml-lg-4">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
                         </form>
                     <?php } else {
                         if(!isset($_COOKIE['_uid_']) && !isset($_COOKIE['_uiid_'])) {
-                            echo '<a class="btn-teal btn rounded-pill px-4 ml-lg-4" href="./backend/signin.php">Sign in</a>';
-                            echo '<a class="btn-teal btn rounded-pill px-4 ml-lg-4" href="./backend/signup.php">Sign up</a>';
+                            ?>
+                            <form id="element1" action="./backend/signin.php" method="POST">
+                            <input type="text" name="cpagesin" value="<?php echo $curr_page; ?>" hidden>
+                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4" >Sign in</button>
+                            </form>
+                            
+                            <form id="element2" action="./backend/signup.php" method="POST">
+                            <input type="text" name="cpagesup" value="<?php echo $curr_page; ?>" hidden>
+                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4" >Sign up</button>                                              
+                            </form>
+                            <?php
                         } else {
                             $user_id = base64_decode($_COOKIE['_uid_']);
                             $user_nickname = base64_decode($_COOKIE['_uiid_']);
