@@ -1,7 +1,7 @@
 <?php
     session_start();
     ob_start();
-
+    $cpage = $_POST['cpage'];
     if(isset($_SESSION['login'])) {
         session_destroy();
         unset($_SESSION['login']);
@@ -12,5 +12,5 @@
         setcookie('_uid_', '', time() - 60 * 60 * 24, '/', '', '', true);
         setcookie('_uiid_', '', time() - 60 * 60 * 24, '/', '', '', true);
     }
-    header("Location: index.php");
+    header("Location: $cpage");
 ?>
