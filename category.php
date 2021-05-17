@@ -17,6 +17,9 @@
 
 
 <?php
+    if(isset($_GET['cat'])){
+        $category_name = $_GET['cat'];
+    }
     if(isset($_GET['post_id'])){
         $post_id = $_GET['post_id'];
         $sql = "SELECT * FROM posts WHERE post_id = :id";
@@ -101,7 +104,8 @@
                             $category_title = $categories['category_name']; ?>
                         <?php }
                     ?>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Welcome to <?php echo $_GET['category_title']; ?></div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Welcome to <span style="color: coral;"><?php echo $category_name; ?>
+                    </span></div>
                 </div>
                 <?php
                     $sql = "SELECT * FROM posts WHERE post_status = :status ORDER BY post_id DESC LIMIT 0,5";
@@ -146,7 +150,7 @@
                     ]);
                     while($categories = $stmt->fetch(PDO::FETCH_ASSOC)){
                         $category_title = $categories['category_name']; ?>
-                        <a href="#" class="fh5co_tagg"><?php echo $category_title; ?></a>
+                        <a href="category.php?cat=<?php echo $category_title ?>" class="fh5co_tagg"><?php echo $category_title; ?></a>
   
                     <?php }
                 ?>
