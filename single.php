@@ -188,7 +188,7 @@
                         ]);
                         while($categories = $stmt->fetch(PDO::FETCH_ASSOC)){
                             $category_title = $categories['category_name']; ?>
-                            <a href="#" class="fh5co_tagg"><?php echo $category_title; ?></a>
+                            <a href="category.php?cat=<?php echo $category_title ?>" class="fh5co_tagg"><?php echo $category_title; ?></a>
     
                         <?php }
                     ?>
