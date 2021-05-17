@@ -65,7 +65,7 @@
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Trending</div>
         </div>
         <div class="owl-carousel owl-theme js" id="slider1">
-        <?php
+            <?php
             
                 $sql5 = "SELECT * FROM posts ORDER BY post_views DESC limit 0,10";
                 $stmt = $pdo->prepare($sql5);
@@ -82,7 +82,7 @@
                             <div class="fh5co_latest_trading_img"><img src="images/<?php echo $post_image; ?>" alt="<?php echo $post_image; ?>" class="fh5co_img_special_relative"/></div>
                             <div class="fh5co_latest_trading_img_position_absolute"></div>
                             <div class="fh5co_latest_trading_img_position_absolute_1">
-                                <a href="single.php" class="text-white"> <?php echo $post_title; ?> </a>
+                                <a href="single.php?post_id=<?php echo $post_id; ?>" class="text-white"> <?php echo $post_title; ?> </a>
                                 <div class="fh5co_latest_trading_date_and_name_color"> <?php echo $post_date; ?> </div>
                             </div>
                         </div>
@@ -101,42 +101,30 @@
             <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
         </div>
         <div class="owl-carousel owl-theme" id="slider2">
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="images/joao-victor-fonseca-CLnwQUwGpBE-unsplash.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.php" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
+            <?php
+                
+                $sql5 = "SELECT * FROM posts ORDER BY post_views DESC limit 0,10";
+                $stmt = $pdo->prepare($sql5);
+                $stmt->execute();
+                while($posts = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $post_id = $posts['post_id'];
+                    $post_title = $posts['post_title'];
+                    $post_date = $posts['post_date'];
+                    $post_image = $posts['post_image'];
+                    $post_views = $posts['post_views']; ?>
+
+                    <div class="item px-2">
+                        <div class="fh5co_hover_news_img">
+                            <div class="fh5co_news_img"><img src="images/<?php echo $post_image; ?>" alt=""/></div>
+                            <div>
+                                <a href="single.php?post_id=<?php echo $post_id; ?>" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
+                                <div class="c_g"><i class="fa fa-clock-o"></i><?php echo $post_date; ?></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="images/joao-victor-fonseca-CLnwQUwGpBE-unsplash.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.php" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="images/jonathan-borba-w-b7LoBvjvU-unsplash.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.php" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
-            <div class="item px-2">
-                <div class="fh5co_hover_news_img">
-                    <div class="fh5co_news_img"><img src="images/judeus-samson-0UECcInuCR4-unsplash.jpg" alt=""/></div>
-                    <div>
-                        <a href="single.php" class="d-block fh5co_small_post_heading"><span class="">The top 10 best computer speakers in the market</span></a>
-                        <div class="c_g"><i class="fa fa-clock-o"></i> Oct 16,2017</div>
-                    </div>
-                </div>
-            </div>
+
+                <?php }
+            ?>
         </div>
     </div>
 </div>
