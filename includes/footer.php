@@ -31,14 +31,19 @@
                 <div class="footer_main_title py-3">Category</div>
                 <ul class="footer_menu">
                 <?php
-                    $sql1 = "SELECT * FROM categories WHERE category_status = :status";
-                    $stmt = $pdo->prepare($sql1);
+                    
+                    $sqli = "SELECT * FROM categories WHERE category_status = :status";
+                    $stmt = $pdo->prepare($sqli);
                     $stmt->execute([
                         ':status' => 'published'
                     ]);
+                    if(isset($_GET['cat'])){
+                        $category_name = $_GET['cat'];
+                    }
+                    
                     while($categories = $stmt->fetch(PDO::FETCH_ASSOC)){
                         $category_title = $categories['category_name']; ?>
-                        <li><a href="category.php" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; <?php echo $category_title; ?></a></li>
+                        <li><a href="category.php?cat=<?php echo $category_title ?>" class=""><i class="fa fa-angle-right"></i>&nbsp;&nbsp; <?php echo $category_title; ?></a></li>
 
                     <?php }
                 ?>

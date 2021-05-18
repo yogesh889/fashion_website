@@ -86,7 +86,7 @@
                             $user_name = $comments['com_user_name'];
                             $com_date = $comments['com_date'];
                             $com_detail = $comments['com_detail'];
-                            $com_status = $comments['com_staus'];
+                            $com_status = $comments['com_status'];
                             $com_user_id = $comments['com_user_id']; 
 
                             if(isset($_SESSION['user_id'])){
@@ -94,10 +94,10 @@
                             } else if(isset($_COOKIE['_uid_'])) {
                                 $signed_in_user_id = base64_decode($_COOKIE['_uid_']);
                             } else {
-                                $signed_id_user_id = -1;
+                                $signed_in_user_id = -1;
                             }
 
-                            if($comment_status == 'unapproved' && $com_user_id == $signed_in_user_id ) { ?>
+                            if($com_status == 'unapproved' && $com_user_id == $signed_in_user_id ) { ?>
                                 <div class="card mb-5">
                                     <div class="card-header d-flex justify-content-between">
                                         <div class="mr-2 text-dark">
@@ -154,7 +154,7 @@
                                             ':post_id' => $_GET['post_id'],
                                             ':com_detail' => $comments,
                                             ':user_id' => base64_decode($_COOKIE['_uid_']),
-                                            ':user_name' => 'User name',
+                                            ':user_name' => $user_name,
                                             ':com_date' => date("M n, Y") . ' at ' . date("h:i A"),
                                             ':com_status' => 'unapproved'
                                         ]);
