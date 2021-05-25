@@ -14,16 +14,19 @@
                                         ]);
                                         $count = $stmt->rowCount();
                                         if($count == 0) {
-                                            $error = "Wrong credentials!";
+                                            $_SESSION['error'] = "Wrong credentials!";
+                                            header("Location: /lalit_fashion_website/backend/signin.php");
                                         } else if($count > 1) {
-                                            $error = "Wrong credentials!";
+                                            
+                                            $_SESSION['error'] = "Wrong credentials!";
+                                            header("Location: /lalit_fashion_website/backend/signin.php");
                                         } else if($count == 1) {
                                             $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                             $user_password_hash = $user['user_password'];
                                             $user_name = $user['user_name'];
                                             $user_role = $user['user_role'];
                                             if(password_verify($password, $user_password_hash)) {
-                                                $success = "Sign in successful!";
+                                                $_SESSION['success'] = "Sign in successful!";
                                                 if(!empty($_POST['check'])) {
                                                     $user_id = $user['user_id'];
                                                     $user_nickname = $user['user_nickname'];
@@ -39,9 +42,16 @@
                                                 $_SESSION['user_nickname'] = $user['user_nickname'];
                                                 $_SESSION['user_role'] = $user_role;
                                                 $_SESSION['login'] = 'success'; 
-                                                header("Refresh:2;url= ../index.php");
+                                                if(isset($_SESSION['cpage'])){
+                                                    $cpage = "/lalit_fashion_website/".$_SESSION['cpage'];
+                                                header("Location: $cpage");
+                                                }else{
+                                                    header("Location: google.com");
+                                                }
                                             } else {
-                                                $error_password = "Wrong password!";
+                                                
+                                                $_SESSION['error_password'] = "Wrong password!";
+                                                header("Location: /lalit_fashion_website/backend/signin.php");
                                             }
                                         }
                                     }
