@@ -39,14 +39,24 @@ if(isset($_POST['cpagesin'])){
                                     <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">SIGN IN</h3></div>
                                     <div class="card-body">
                                         <?php
-                                            if(isset($success)) {
+                                            
+                                            if(isset($_SESSION['success'])) {
+                                                $success = $_SESSION['success'];
                                                 echo "<p class='alert alert-success'>{$success}</p>";
+                                                unset($_SESSION['success']);
                                             }
-                                            if(isset($error))  {
+                                            if(isset($_SESSION['error']))  {
+                                                $error = $_SESSION['error'];
                                                 echo "<p class='alert alert-danger'>{$error}</p>";
-                                            } else if(isset($error_password)) {
+                                                unset($_SESSION['error']);
+                                            } else if(isset($_SESSION['error_password'])) {
+                                                $error_password = $_SESSION['error_password'];
                                                 echo "<p class='alert alert-danger'>{$error_password}</p>";
+                                                unset($_SESSION['error_password']);
                                             }
+                                            
+                                            
+                                            
                                         ?>
                                         <form action="check.php" method="POST">
                                             <div class="form-group">
