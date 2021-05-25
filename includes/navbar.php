@@ -29,7 +29,7 @@
                 </div>
                 <!--<div class="d-inline-block text-center"><img src="images/country.png" alt="img" class="fh5co_country_width"/></div>-->
                 <?php 
-
+                
                     if(isset($_POST['reset'])) {
 
                         if(isset($_SESSION['login'])) {

@@ -95,7 +95,7 @@ $cpage = $_POST['cpagesup'];
                                                     echo "<p class='alert alert-success'>
                                                             Account created successfully. <a href='signin.php'>Sign in now</a>
                                                           </p>";
-                                                          header("Location: ../$cpage");
+                                                          
                                                 }
                                             ?>
                                             <div class="form-row">
