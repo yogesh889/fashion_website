@@ -12,5 +12,5 @@
         setcookie('_uid_', '', time() - 60 * 60 * 24, '/', '', '', true);
         setcookie('_uiid_', '', time() - 60 * 60 * 24, '/', '', '', true);
     }
-    header("Location: /lalit_fashion_website/index.php");
+    header("Location: /fashion_website/index.php");
 ?> 

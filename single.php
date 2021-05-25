@@ -3,6 +3,7 @@
 <?php require_once('includes/head_section.php') ?>
 
 
+
 <body class="single">
 
 

@@ -49,7 +49,7 @@
                     }
 
                     if(isset($_SESSION['login'])) { ?>
-                        <form action="../lalit_fashion_website/signout.php" method="POST">
+                        <form action="../fashion_website/signout.php" method="POST">
                             <input type="text" name="cpage" value="<?php echo $curr_page; ?>" hidden>
                             <button class="btn-teal btn rounded-pill px-4 ml-lg-4">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
                         </form>

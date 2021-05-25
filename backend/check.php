@@ -15,11 +15,11 @@
                                         $count = $stmt->rowCount();
                                         if($count == 0) {
                                             $_SESSION['error'] = "Wrong credentials!";
-                                            header("Location: /lalit_fashion_website/backend/signin.php");
+                                            header("Location: /fashion_website/backend/signin.php");
                                         } else if($count > 1) {
                                             
                                             $_SESSION['error'] = "Wrong credentials!";
-                                            header("Location: /lalit_fashion_website/backend/signin.php");
+                                            header("Location: /fashion_website/backend/signin.php");
                                         } else if($count == 1) {
                                             $user = $stmt->fetch(PDO::FETCH_ASSOC);
                                             $user_password_hash = $user['user_password'];
@@ -43,7 +43,7 @@
                                                 $_SESSION['user_role'] = $user_role;
                                                 $_SESSION['login'] = 'success'; 
                                                 if(isset($_SESSION['cpage'])){
-                                                    $cpage = "/lalit_fashion_website/".$_SESSION['cpage'];
+                                                    $cpage = "/fashion_website/".$_SESSION['cpage'];
                                                 header("Location: $cpage");
                                                 }else{
                                                     header("Location: google.com");
@@ -51,7 +51,7 @@
                                             } else {
                                                 
                                                 $_SESSION['error_password'] = "Wrong password!";
-                                                header("Location: /lalit_fashion_website/backend/signin.php");
+                                                header("Location: /fashion_website/backend/signin.php");
                                             }
                                         }
                                     }

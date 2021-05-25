@@ -9,7 +9,7 @@ if(isset($_POST['cpagesin'])){
 ?>
 <?php
     if(isset($_SESSION['login']) || isset($_COOKIE['_uid_']) || isset($_COOKIE['_uiid_'])) {
-        header('Location: http://localhost/lalit_fashion_website/'.$cpage);
+        header('Location: http://localhost/fashion_website/'.$cpage);
     }
 ?>
 
@@ -56,7 +56,7 @@ if(isset($_POST['cpagesin'])){
                                             }
                                             
                                             
-                                            
+                                           
                                         ?>
                                         <form action="check.php" method="POST">
                                             <div class="form-group">
