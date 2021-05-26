@@ -73,12 +73,12 @@
                     $sql = "SELECT * FROM comments WHERE com_status = :status AND com_post_id = :id";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([
-                        ':status' => 'approved',
+                        ':status' => 'unapproved',
                         ':id' => $_GET['post_id']
                     ]);
                     $count = $stmt->rowCount();
                     if($count == 0){
-                        echo "no comments";
+                        echo "no comments"; 
                     } else {
                         $sql1 = "SELECT * FROM comments WHERE com_post_id = :id";
                         $stmt1 = $pdo->prepare($sql1);
@@ -101,6 +101,7 @@
                             }
 
                             if($com_status == 'unapproved' && $com_user_id == $signed_in_user_id ) { ?>
+                                
                                 <div class="card mb-5">
                                     <div class="card-header d-flex justify-content-between">
                                         <div class="mr-2 text-dark">
@@ -161,6 +162,7 @@
                                             ':com_date' => date("M n, Y") . ' at ' . date("h:i A"),
                                             ':com_status' => 'unapproved'
                                         ]);
+                                        header("Location: single.php?post_id={$_GET['post_id']}");
                                     }
                                 ?>
                                 <form action="single.php?post_id=<?php echo $_GET['post_id']; ?>" method="POST">

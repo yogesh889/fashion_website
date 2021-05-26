@@ -247,6 +247,28 @@
 
 <div class="container-fluid pb-4 pt-4 paddding">
     <div class="container paddding">
+        <?php
+            $sql = "SELECT * FROM posts WHERE post_status = :status";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                ':status' => 'published'
+            ]);
+            $post_count = $stmt->rowCount();
+            $post_per_page = 3;
+            if(isset($_Get['page'])){
+                $page = $_GET['page'];
+                if($page == 1){
+                    $page_id = 0;
+                } else {
+                    $page_id = ($page * $post_per_page) - $post_per_page;
+                }
+                
+            } else {
+                $page = 1;
+                $page_id = 0;
+            }
+            $total_pager = ceil($post_count / $post_per_page);
+        ?>
         <div class="row mx-0">
             <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
                 <div>
@@ -254,11 +276,14 @@
                 </div>
 
                 <?php
-                    $sql = "SELECT * FROM posts WHERE post_status = :status ORDER BY post_id DESC LIMIT 0,5";
+                    $sql = "SELECT * FROM posts WHERE post_status = :status ORDER BY post_id DESC LIMIT $page_id, $post_per_page";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([
                         ':status' => 'published'
                     ]);
+                    echo $page_id;
+                    echo $post_per_page;
+                    echo $page;
                     while($posts = $stmt->fetch(PDO:: FETCH_ASSOC)){
                         $post_id = $posts['post_id'];
                         $post_title = $posts['post_title'];
@@ -282,7 +307,7 @@
                         <?php }
                 ?>
                 </div>
-            <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
+                    <div class="col-md-3 animate-box" data-animate-effect="fadeInRight">
                 <div>
                     <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Tags</div>
                 </div>
