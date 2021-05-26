@@ -31,6 +31,8 @@
         $post_date = $post['post_date'];
         $post_detail = $post['post_detail'];
         $post_views = $post['post_views'];
+        $post_image = $post['post_image'];
+
 
         $sql1 = "UPDATE posts SET post_views = post_views + 1 WHERE post_id = :id";
         $stmt = $pdo->prepare($sql1);
@@ -46,10 +48,10 @@
         
 ?>
 
-<div id="fh5co-title-box" style="background-image: url(images/camila-cordeiro-114636.jpg); background-position: 50% 90.5px;" data-stellar-background-ratio="0.5">
+<div id="fh5co-title-box" style="background-image: url(images/<?php echo $post_image; ?>); background-position: 100% ;" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="page-title">
-        <img src="images/person_1.jpg" alt="Free HTML5 by FreeHTMl5.co">
+        <img src="images/<?php echo $post_image; ?>" alt="Free HTML5 by FreeHTMl5.co">
         <span><?php echo $post_date; ?></span>
         <h2><?php echo $post_title; ?></h2>
     </div>
@@ -144,7 +146,7 @@
                                         $sql2 = "SELECT * FROM users WHERE user_id = :id";
                                         $stmt2 = $pdo->prepare($sql2);
                                         $stmt2->execute([
-                                            ':id' => base64_decode($_COOKIE['_uid_'])
+                                            ':id' => $_SESSION['user_id']
                                         ]);
                                         $result = $stmt2->fetch(PDO::FETCH_ASSOC);
                                         $user_name = $result['user_name'];
@@ -154,7 +156,7 @@
                                         $stmt->execute([
                                             ':post_id' => $_GET['post_id'],
                                             ':com_detail' => $comments,
-                                            ':user_id' => base64_decode($_COOKIE['_uid_']),
+                                            ':user_id' => $_SESSION['user_id'],
                                             ':user_name' => $user_name,
                                             ':com_date' => date("M n, Y") . ' at ' . date("h:i A"),
                                             ':com_status' => 'unapproved'
@@ -168,7 +170,7 @@
                             </div>
                         </div>
                     <?php } else {
-                        echo "<a href='./backend/signin.php'>Sign in to comment</a>";
+                        echo "<a href='/fashion_website/backend/signin.php'>Sign in to comment</a>";
                     }
                 ?>
                 

@@ -46,7 +46,7 @@
                                                     $cpage = "/fashion_website/".$_SESSION['cpage'];
                                                 header("Location: $cpage");
                                                 }else{
-                                                    header("Location: google.com");
+                                                    header("Location: index.php");
                                                 }
                                             } else {
                                                 
