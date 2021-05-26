@@ -255,7 +255,7 @@
             ]);
             $post_count = $stmt->rowCount();
             $post_per_page = 3;
-            if(isset($_Get['page'])){
+            if(isset($_GET['page'])){
                 $page = $_GET['page'];
                 if($page == 1){
                     $page_id = 0;
@@ -281,9 +281,6 @@
                     $stmt->execute([
                         ':status' => 'published'
                     ]);
-                    echo $page_id;
-                    echo $post_per_page;
-                    echo $page;
                     while($posts = $stmt->fetch(PDO:: FETCH_ASSOC)){
                         $post_id = $posts['post_id'];
                         $post_title = $posts['post_title'];
@@ -367,16 +364,35 @@
                 </div>
             </div>
         </div>
-        <div class="row mx-0 animate-box" data-animate-effect="fadeInUp">
-            <div class="col-12 text-center pb-4 pt-4">
-                <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Previous</a>
-                <a href="#" class="btn_pagging">1</a>
-                <a href="#" class="btn_pagging">2</a>
-                <a href="#" class="btn_pagging">3</a>
-                <a href="#" class="btn_pagging">...</a>
-                <a href="#" class="btn_mange_pagging">Next <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
-             </div>
-        </div>
+
+
+<!-- pagination -->
+        <?php
+            if($post_count > $post_per_page) { ?>
+                <div class="row mx-0 animate-box" data-animate-effect="fadeInUp">
+                    <div class="col-12 text-center pb-4 pt-4">
+                    <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Previous</a>
+                    <?php
+                        if(isset($_GET['page'])){
+                            $active = $_GET['page'];
+                        } else {
+                            $active = 1;
+                        }
+                        for($i = 1; $i <= $total_pager; $i++) {
+                            if($i = $active){
+                                echo '<a href="index.php?page=' . $i . '" class="btn_pagging active">' . $i . ' </a>';
+                            } else {
+                                echo '<a href="index.php?page=' . $i . '" class="btn_pagging">' . $i . ' </a>';
+                            }
+                            
+                        }
+                    ?>
+                    <a href="#" class="btn_mange_pagging">Next <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
+                    </div>
+                </div>
+            <?php } 
+        ?>
+        
     </div>
 </div>
 
