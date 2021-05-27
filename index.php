@@ -379,7 +379,7 @@
                             $active = 1;
                         }
                         for($i = 1; $i <= $total_pager; $i++) {
-                            if($i = $active){
+                            if($i == $active){
                                 echo '<a href="index.php?page=' . $i . '" class="btn_pagging active">' . $i . ' </a>';
                             } else {
                                 echo '<a href="index.php?page=' . $i . '" class="btn_pagging">' . $i . ' </a>';
