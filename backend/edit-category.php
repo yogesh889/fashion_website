@@ -1,136 +1,16 @@
 <?php require_once('./includes/header.php'); ?>
 
     <body class="nav-fixed">
-        <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-            <a class="navbar-brand d-none d-sm-block" href="index.html">Admin Panel</a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
-            <ul class="navbar-nav align-items-center ml-auto">
-                
-                <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
-
-                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
-                        <h6 class="dropdown-header dropdown-notifications-header"><i class="mr-2" data-feather="bell"></i>Alerts Center</h6>
-                        <a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><div class="dropdown-notifications-item-icon bg-warning"><i data-feather="activity"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 29, 2019</div>
-                                <div class="dropdown-notifications-item-content-text">This is an alert message. It&apos;s nothing serious, but it requires your attention.</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><div class="dropdown-notifications-item-icon bg-info"><i data-feather="bar-chart"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 22, 2019</div>
-                                <div class="dropdown-notifications-item-content-text">A new monthly report is ready. Click here to view!</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><div class="dropdown-notifications-item-icon bg-danger"><i class="fas fa-exclamation-triangle"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 8, 2019</div>
-                                <div class="dropdown-notifications-item-content-text">Critical system failure, systems shutting down.</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><div class="dropdown-notifications-item-icon bg-success"><i data-feather="user-plus"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 2, 2019</div>
-                                <div class="dropdown-notifications-item-content-text">New user request. Woody has requested access to the organization.</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-footer" href="#!">View All Alerts</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
-                        <h6 class="dropdown-header dropdown-notifications-header"><i class="mr-2" data-feather="mail"></i>Message Center</h6>
-                        <a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><img class="dropdown-notifications-item-img" src="https://source.unsplash.com/vTL_qy03D1I/60x60" />
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</div>
-                                <div class="dropdown-notifications-item-content-details">Emily Fowler &#xB7; 58m</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><img class="dropdown-notifications-item-img" src="https://source.unsplash.com/4ytMf8MgJlY/60x60" />
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</div>
-                                <div class="dropdown-notifications-item-content-details">Diane Chambers &#xB7; 2d</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown no-caret mr-3 dropdown-user">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="./assets/img/mdabarik.jpg"/></a>
-                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
-                        <h6 class="dropdown-header d-flex align-items-center">
-                            <img class="dropdown-user-img" src="./assets/img/mdabarik.jpg" alt="Photo" />
-                            <div class="dropdown-user-details">
-                                <div class="dropdown-user-details-name">Valerie Luna</div>
-                                <div class="dropdown-user-details-email">vluna@aol.com</div>
-                            </div>
-                        </h6>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#!"
-                            ><div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                            Account</a
-                        ><a class="dropdown-item" href="#!"
-                            ><div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                            Logout</a
-                        >
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <?php require_once('./includes/top-navbar.php'); ?>
         
 
         <!--Side Nav-->
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sidenav shadow-right sidenav-light">
-                    <div class="sidenav-menu">
-                        <div class="nav accordion" id="accordionSidenav">
-                            <a class="nav-link collapsed pt-4" href="index.html">
-                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                                Dashboard
-                            </a>
-                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"><div class="nav-link-icon"><i data-feather="layout"></i></div>
-                                Posts
-                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" data-parent="#accordionSidenav">
-                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
-                                    <a class="nav-link" href="all-post.html">All Posts</a>
-                                    <a class="nav-link" href="add-new.html">Add New Post</a>
-                                </nav>
-                            </div>
-
-                            <a class="nav-link" href="categories.html" ><div class="nav-link-icon"><i data-feather="chevrons-up"></i></div>
-                                Categories
-                            </a>
-
-                            <a class="nav-link" href="pages.html" ><div class="nav-link-icon"><i data-feather="book-open"></i></div>
-                                Pages
-                            </a>
-
-                            <a class="nav-link" href="comments.html" ><div class="nav-link-icon"><i data-feather="package"></i></div>
-                                Comments
-                            </a>
-
-                            <a class="nav-link" href="messages.html" ><div class="nav-link-icon"><i data-feather="mail"></i></div>
-                                Messages
-                            </a>
-
-                            <a class="nav-link" href="profile.html" ><div class="nav-link-icon"><i data-feather="user"></i></div>
-                                Profile
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="sidenav-footer">
-                        <div class="sidenav-footer-content">
-                            <div class="sidenav-footer-subtitle">Logged in as:</div>
-                            <div class="sidenav-footer-title">Md. A. Barik</div>
-                        </div>
-                    </div>
-
-                </nav>
+                <?php 
+                    $curr_page = basename(__FILE__);
+                    require_once("./includes/left-sidebar.php");
+                ?>
             </div>
 
 
@@ -141,30 +21,62 @@
                             <div class="page-header-content">
                                 <h1 class="page-header-title">
                                     <div class="page-header-icon"><i data-feather="edit-3"></i></div>
-                                    <span>Create New Category</span>
+                                    <span>Update Category</span>
                                 </h1>
                             </div>
                         </div>
                     </div>
 
+                    <?php 
+                        if(isset($_POST['edit'])) {
+                            $id = $_POST['edit-id'];
+                            $url = "http://localhost/techbarik/backend/edit-category.php?id=".$id;
+                            header("Location: {$url}");
+                        }
+                    ?>
+
                     <!--Start Table-->
                     <div class="container-fluid mt-n10">
                         <div class="card mb-4">
-                            <div class="card-header">Create New Category</div>
+                            <div class="card-header">Update Category</div>
+                            <?php 
+                                $sql = "SELECT * FROM categories WHERE category_id = :id";
+                                $stmt = $pdo->prepare($sql);
+                                $stmt->execute([
+                                    ':id' => $_GET['id']
+                                ]);
+                                $categories = $stmt->fetch(PDO::FETCH_ASSOC);
+                                $category_title = $categories['category_name'];
+                                $category_status = $categories['category_status']; 
+                            ?>
                             <div class="card-body">
-                                <form>
+                                <?php 
+                                    if(isset($_POST['update-category'])) {
+                                        $cat_title = trim($_POST['category-title']);
+                                        $category_status = $_POST['category-status'];
+                                        $sql = "UPDATE categories SET category_name = :title, category_status = :status WHERE category_id = :id";
+                                        $stmt = $pdo->prepare($sql);
+                                        $stmt->execute([
+                                            ':title' => $cat_title,
+                                            ':status' => $category_status,
+                                            ':id' => $_GET['id']
+                                        ]);
+                                        header("Location: categories.php");
+                                    }
+                                ?>
+                                <form action="edit-category.php?id=<?php echo $_GET['id']; ?>" method="POST">
                                     <div class="form-group">
-                                        <label for="post-title">Category Name:</label>
-                                        <input class="form-control" id="post-title" type="text" placeholder="Category Name..." />
+                                        <label for="cat-title">Category Name:</label>
+                                        <input value="<?php echo $category_title; ?>" name="category-title" class="form-control" id="cat-title" type="text" placeholder="Category Name..." />
                                     </div>
                                     <div class="form-group">
-                                        <label for="post-status">Status:</label>
-                                        <select class="form-control" id="post-status">
-                                            <option>Published</option>
-                                            <option>Draft</option>
+                                        <label for="cat-status">Status:</label>
+                                        <select name="category-status" class="form-control" id="cat-status">
+                                            <option value="Published" <?php echo $category_status=='Published'?'selected':'';  ?>>Published</option>
+                                            <option value="Draft" <?php echo $category_status=='Draft'?'selected':'';  ?>>Draft</option>
                                         </select>
                                     </div>
-                                    <button class="btn btn-primary mr-2 my-1" type="button">Submit now</button>
+                                    <button name="update-category" class="btn btn-primary mr-2 my-1" type="submit">Submit now</button>
                                 </form>
                             </div>
                         </div>

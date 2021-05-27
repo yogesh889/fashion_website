@@ -371,7 +371,19 @@
             if($post_count > $post_per_page) { ?>
                 <div class="row mx-0 animate-box" data-animate-effect="fadeInUp">
                     <div class="col-12 text-center pb-4 pt-4">
-                    <a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Previous</a>
+                    <?php
+                        if(isset($_GET['page'])){
+                            $prev = $_GET['page'] - 1;
+                        } else {
+                            $prev = 0;
+                        }
+                        if($prev + 1 <= 1){
+                                echo '<a href="#" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Previous</a>';
+                        } else {
+                            echo '<a href="index.php?page='. $prev .'" class="btn_mange_pagging"><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp; Previous</a>';
+                        }
+                    ?>
+                    
                     <?php
                         if(isset($_GET['page'])){
                             $active = $_GET['page'];
@@ -387,7 +399,19 @@
                             
                         }
                     ?>
-                    <a href="#" class="btn_mange_pagging">Next <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>
+                    <?php
+                        if(isset($_GET['page'])){
+                            $next = $_GET['page'] + 1;
+                        } else {
+                            $next = 2;
+                        }
+                        if($next - 1 >= $total_pager){
+                            echo '<a href="#" class="btn_mange_pagging">Next <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>';
+                        } else {
+                            echo '<a href="index.php?page='. $next .'" class="btn_mange_pagging">Next <i class="fa fa-long-arrow-right"></i>&nbsp;&nbsp; </a>';
+                        }
+                    ?>
+                    
                     </div>
                 </div>
             <?php } 

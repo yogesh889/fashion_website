@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <?php ob_start(); ?>
+<?php require_once("../includes/db.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

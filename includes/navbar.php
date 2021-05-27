@@ -3,6 +3,78 @@
 <style>
 #element1 {display:inline-block; width:auto; } 
 #element2 {display:inline-block; width:auto; } 
+.openBtn {
+  background: none;
+  border: none;
+  /* padding: 10px 15px; */
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.openBtn:hover {
+  background: none;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+.overlay input[type=text] {
+  padding: 15px;
+  font-size: 14.5px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+}
+
+.overlay input[type=text]:hover {
+  background: #f1f1f1;
+}
+
+.overlay .openBtn {
+  float: left;
+  width: 20%;
+  padding: 16px;
+  background: #ddd;
+  font-size: 19px;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay .openBtn:hover {
+  background: #bbb;
+}
 </style>
 
 <div class="container-fluid">
@@ -13,8 +85,28 @@
             </div>
             <div class="col-12 col-md-9 align-self-center fh5co_mediya_right">
                 <div class="text-center d-inline-block">
-                    <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-search"></i></div></a>
+                    <div id="myOverlay" class="overlay">
+                        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                        <div class="overlay-content">
+                            <form action="search.php" method="POST">
+                            <input name="search-keyword" type="text" placeholder="Search.." name="search">
+                            <div type="submit"><i class="openBtn fa fa-search"></i>		</div>
+                            </form>
+                        </div>
+                    </div>
+                    <a class="fh5co_display_table"><div class="openBtn fh5co_verticle_middle" onclick="openSearch()"><i class="fa fa-search"></i></div></a>
                 </div>
+
+                <script>
+                function openSearch() {
+                document.getElementById("myOverlay").style.display = "block";
+                }
+
+                function closeSearch() {
+                document.getElementById("myOverlay").style.display = "none";
+                }
+                </script>
+
                 <div class="text-center d-inline-block">
                     <a class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-linkedin"></i></div></a>
                 </div>
