@@ -172,7 +172,9 @@
                             $user_role = $user['user_role'];
                             $_SESSION['user_name'] = $user_nickname;
                             $_SESSION['user_role'] = $user_role;
-                            $_SESSION['login'] = 'success'; ?>
+                            $_SESSION['login'] = 'success';
+                            $_SESSION['user_id'] = $user_id;
+                            $_SESSION['user_nickname'] = $user_nickname; ?>
                             <form action="<?php $curr_page; ?>" method="POST">
                                 <button class="btn-teal btn rounded-pill px-4 ml-lg-4">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
                             </form>

@@ -1,136 +1,16 @@
 <?php require_once('./includes/header.php'); ?>
 
     <body class="nav-fixed">
-        <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-            <a class="navbar-brand d-none d-sm-block" href="index.html">Admin Panel</a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
-            <ul class="navbar-nav align-items-center ml-auto">
-                
-                <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
-
-                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
-                        <h6 class="dropdown-header dropdown-notifications-header"><i class="mr-2" data-feather="bell"></i>Alerts Center</h6>
-                        <a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><div class="dropdown-notifications-item-icon bg-warning"><i data-feather="activity"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 29, 2019</div>
-                                <div class="dropdown-notifications-item-content-text">This is an alert message. It&apos;s nothing serious, but it requires your attention.</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><div class="dropdown-notifications-item-icon bg-info"><i data-feather="bar-chart"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 22, 2019</div>
-                                <div class="dropdown-notifications-item-content-text">A new monthly report is ready. Click here to view!</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><div class="dropdown-notifications-item-icon bg-danger"><i class="fas fa-exclamation-triangle"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 8, 2019</div>
-                                <div class="dropdown-notifications-item-content-text">Critical system failure, systems shutting down.</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><div class="dropdown-notifications-item-icon bg-success"><i data-feather="user-plus"></i></div>
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-details">December 2, 2019</div>
-                                <div class="dropdown-notifications-item-content-text">New user request. Woody has requested access to the organization.</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-footer" href="#!">View All Alerts</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="mail"></i></a>
-                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
-                        <h6 class="dropdown-header dropdown-notifications-header"><i class="mr-2" data-feather="mail"></i>Message Center</h6>
-                        <a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><img class="dropdown-notifications-item-img" src="https://source.unsplash.com/vTL_qy03D1I/60x60" />
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                <div class="dropdown-notifications-item-content-details">Emily Fowler &#xB7; 58m</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-item" href="#!"
-                            ><img class="dropdown-notifications-item-img" src="https://source.unsplash.com/4ytMf8MgJlY/60x60" />
-                            <div class="dropdown-notifications-item-content">
-                                <div class="dropdown-notifications-item-content-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-                                <div class="dropdown-notifications-item-content-details">Diane Chambers &#xB7; 2d</div>
-                            </div></a
-                        ><a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown no-caret mr-3 dropdown-user">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="./assets/img/mdabarik.jpg"/></a>
-                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
-                        <h6 class="dropdown-header d-flex align-items-center">
-                            <img class="dropdown-user-img" src="./assets/img/mdabarik.jpg" alt="Photo" />
-                            <div class="dropdown-user-details">
-                                <div class="dropdown-user-details-name">Valerie Luna</div>
-                                <div class="dropdown-user-details-email">vluna@aol.com</div>
-                            </div>
-                        </h6>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#!"
-                            ><div class="dropdown-item-icon"><i data-feather="settings"></i></div>
-                            Account</a
-                        ><a class="dropdown-item" href="#!"
-                            ><div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                            Logout</a
-                        >
-                    </div>
-                </li>
-            </ul>
-        </nav>
+        <?php require_once('./includes/top-navbar.php'); ?>
         
 
         <!--Side Nav-->
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sidenav shadow-right sidenav-light">
-                    <div class="sidenav-menu">
-                        <div class="nav accordion" id="accordionSidenav">
-                            <a class="nav-link collapsed pt-4" href="index.html">
-                                <div class="nav-link-icon"><i data-feather="activity"></i></div>
-                                Dashboard
-                            </a>
-                            <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"><div class="nav-link-icon"><i data-feather="layout"></i></div>
-                                Posts
-                                <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" data-parent="#accordionSidenav">
-                                <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
-                                    <a class="nav-link" href="all-post.html">All Posts</a>
-                                    <a class="nav-link" href="add-new.html">Add New Post</a>
-                                </nav>
-                            </div>
-
-                            <a class="nav-link" href="categories.html" ><div class="nav-link-icon"><i data-feather="chevrons-up"></i></div>
-                                Categories
-                            </a>
-
-                            <a class="nav-link" href="pages.html" ><div class="nav-link-icon"><i data-feather="book-open"></i></div>
-                                Pages
-                            </a>
-
-                            <a class="nav-link" href="comments.html" ><div class="nav-link-icon"><i data-feather="package"></i></div>
-                                Comments
-                            </a>
-
-                            <a class="nav-link" href="messages.html" ><div class="nav-link-icon"><i data-feather="mail"></i></div>
-                                Messages
-                            </a>
-
-                            <a class="nav-link" href="profile.html" ><div class="nav-link-icon"><i data-feather="user"></i></div>
-                                Profile
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="sidenav-footer">
-                        <div class="sidenav-footer-content">
-                            <div class="sidenav-footer-subtitle">Logged in as:</div>
-                            <div class="sidenav-footer-title">Md. A. Barik</div>
-                        </div>
-                    </div>
-
-                </nav>
+                <?php 
+                    $curr_page = basename(__FILE__);
+                    require_once("./includes/left-sidebar.php");
+                ?>
             </div>
 
 
@@ -164,70 +44,133 @@
                                                 <th>Date</th>
                                                 <th>Status</th>
                                                 <th>Approve</th>
-                                                <th>Decline</th>
+                                                <th>Unapprove</th>
                                                 <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>
-                                                    Md. A. Barik
-                                                </td>
-                                                <td>
-                                                    mdabarik19@gmail.com
-                                                </td>
-                                                <td>
-                                                    <a href="#">
-                                                        Post Title
-                                                    </a>
-                                                </td>
-                                                <td>Details</td>
-                                                <td>17 Nov 2020</td>
-                                                <td>
-                                                    <div class="badge badge-success">
-                                                        Approved
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-success btn-icon"><i data-feather="check"></i></button>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="delete"></i></button>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                                                </td>
-                                            </tr>  
-                                            <tr>
-                                                <td>2</td>
-                                                <td>
-                                                    Md. A. Barik
-                                                </td>
-                                                <td>
-                                                    mdabarik19@gmail.com
-                                                </td>
-                                                <td>
-                                                    <a href="#">
-                                                        Post Title
-                                                    </a>
-                                                </td>
-                                                <td>Details</td>
-                                                <td>17 Nov 2020</td>
-                                                <td>
-                                                    <div class="badge badge-success">Approved
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-success btn-icon"><i data-feather="check"></i></button>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="delete"></i></button>
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
-                                                </td>
-                                            </tr>                     
+                                            <?php 
+                                                $sql = "SELECT * FROM comments";
+                                                $stmt = $pdo->prepare($sql);
+                                                $stmt->execute();
+                                                while($comments = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                                    // com_id, com_detail, com_date, com_status, 
+                                                    // com_user_id, user_name, user_email, com_post_id, post_title
+                                                    $com_id = $comments['com_id'];
+                                                    $com_detail = $comments['com_detail'];
+                                                    $com_date = $comments['com_date'];
+                                                    $com_status = $comments['com_status'];
+                                                    $com_user_id = $comments['com_user_id'];
+                                                    // getting user_name and user_email from users table
+                                                    $sql1 = "SELECT * FROM users WHERE user_id = :id";
+                                                    $stmt1 = $pdo->prepare($sql1);
+                                                    $stmt1->execute([
+                                                        ':id' => $com_user_id
+                                                    ]);
+                                                    $user = $stmt1->fetch(PDO::FETCH_ASSOC);
+                                                    $user_name = $user['user_name'];
+                                                    $user_email = $user['user_email'];
+
+                                                    $com_post_id = $comments['com_post_id'];
+                                                    // post_id and post_title from posts table
+                                                    $sql2 = "SELECT * FROM posts WHERE post_id = :id";
+                                                    $stmt2 = $pdo->prepare($sql2);
+                                                    $stmt2->execute([
+                                                        ':id' => $com_post_id
+                                                    ]);
+                                                    $post = $stmt2->fetch(PDO::FETCH_ASSOC);
+                                                    $post_id = $post['post_id'];
+                                                    $post_title = $post['post_title']; ?>
+                                                        <tr>
+                                                            <td><?php echo $com_id; ?></td>
+                                                            <td>
+                                                                <?php echo $user_name; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $user_email; ?>
+                                                            </td>
+                                                            <td>
+                                                                <a href="../single.php?post_id=<?php echo $post_id; ?>" target="_blank">
+                                                                    <?php echo $post_title; ?>
+                                                                </a>
+                                                            </td>
+                                                            <td><?php echo $com_detail; ?></td>
+                                                            <td><?php echo $com_date; ?></td>
+                                                            <td>
+                                                                <div class="badge badge-<?php echo $com_status=="approved"?"success":"danger"; ?>">
+                                                                    <?php echo $com_status; ?>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <?php 
+                                                                    if(isset($_POST['approve'])) {
+                                                                        $comment_id = $_POST['com_id'];
+                                                                        $sql = "UPDATE comments SET com_status = :status WHERE com_id = :id";
+                                                                        $stmt = $pdo->prepare($sql);
+                                                                        $stmt->execute([
+                                                                            ':status' => 'approved',
+                                                                            ':id' => $comment_id
+                                                                        ]);
+                                                                        header("Location: comments.php");
+                                                                    }
+                                                                ?>
+                                                                <?php 
+                                                                    if($com_status == 'approved') { ?>
+                                                                        <button title="Sorry, the status already approved!" class="btn btn-success btn-icon"><i data-feather="check"></i></button>
+                                                                    <?php } else { ?>
+                                                                        <form action="comments.php" method="POST">
+                                                                            <input type="hidden" name="com_id" value="<?php echo $com_id; ?>" />
+                                                                            <button name="approve" type="submit" class="btn btn-success btn-icon"><i data-feather="check"></i></button>
+                                                                        </form>
+                                                                    <?php }
+                                                                ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php 
+                                                                    if(isset($_POST['unapprove'])) {
+                                                                        $comment_id = $_POST['com_id'];
+                                                                        $sql = "UPDATE comments SET com_status = :status WHERE com_id = :id";
+                                                                        $stmt = $pdo->prepare($sql);
+                                                                        $stmt->execute([
+                                                                            ':status' => 'unapproved',
+                                                                            ':id' => $comment_id
+                                                                        ]);
+                                                                        header("Location: comments.php");
+                                                                    }
+                                                                ?>
+                                                                <?php 
+                                                                    if($com_status == 'unapproved') { ?>
+                                                                        <button title="Sorry, it's already unapproved!" name="unapprove" class="btn btn-red btn-icon"><i data-feather="delete"></i></button>
+                                                                    <?php } else { ?>
+                                                                        <form action="comments.php" method="POST">
+                                                                            <input type="hidden" name="com_id" value="<?php echo $com_id; ?>" />
+                                                                            <button name="unapprove" class="btn btn-red btn-icon"><i data-feather="delete"></i></button>
+                                                                        </form>
+                                                                   <?php }
+                                                                ?>
+                                                                
+                                                            </td>
+                                                            <td>
+                                                                <?php 
+                                                                    if(isset($_POST['delete'])) {
+                                                                        $comment_id = $_POST['com_id'];
+                                                                        $sql = "DELETE FROM comments WHERE com_id = :id";
+                                                                        $stmt = $pdo->prepare($sql);
+                                                                        $stmt->execute([
+                                                                            ':id' => $comment_id
+                                                                        ]);
+                                                                        header("Location: comments.php");
+                                                                    }
+                                                                ?>
+                                                                <form action="comments.php" method="POST" >
+                                                                    <input type="hidden" name="com_id" value="<?php echo $com_id; ?>" />
+                                                                    <button name="delete" type="submit" class="btn btn-red btn-icon"><i data-feather="trash-2"></i></button>
+                                                                </form>
+                                                            </td>
+                                                        </tr>    
+                                                <?php }
+                                            ?>
+                                                            
                                         </tbody>
                                     </table>
                                 </div>
