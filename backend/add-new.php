@@ -51,8 +51,8 @@
                             $post_status = $_POST['post-status'];
                             $post_category_id = $_POST['post-category'];
                             $post_photo = $_FILES['post-photo']['name'];
-                            $post_photo_tmp = $_FILES['post-photo-tmp']['tmp-name'];
-                            move_uploaded_file("{$post_photo}", ".././img/{$post_photo}");
+                            $post_photo_tmp = $_FILES['post-photo']['tmp_name'];
+                            move_uploaded_file("{$post_photo_tmp}", "./../images/{$post_photo}");
                             $post_detail = $_POST['post-detail'];
                             $post_tags = $_POST['post-tags'];
                             $sql = "INSERT INTO posts (post_category_id, post_title, post_detail, post_image, post_date, post_status, post_author, post_views, post_comments_counts, post_tags) VALUES (:id, :title, :detail, :image, :date, :status, :author, :views, :comment, :tags)";
@@ -87,8 +87,8 @@
                                     <div class="form-group">
                                         <label for="post-status">Post Status:</label>
                                         <select name="post-status" class="form-control" id="post-status">
-                                            <option value="Published">Published</option>
-                                            <option value="Draft">Draft</option>
+                                            <option value="published">Published</option>
+                                            <option value="draft">Draft</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -96,12 +96,12 @@
                                         <select name="post-category" class="form-control" id="select-category">
                                             <?php
                                                 $sql = "SELECT * FROM categories WHERE category_status = :status";
-                                                $stmt = $pdo-prepare($sql);
+                                                $stmt = $pdo->prepare($sql);
                                                 $stmt->execute([
                                                     ':status' => 'published'
                                                 ]);
                                                 while($cats = $stmt->fetch(PDO::FETCH_ASSOC)) { ?> 
-                                                    <option value="<?php echo $cats['$category_id']; ?>"><?php echo $cats['category_name']; ?></option>
+                                                    <option value="<?php echo $cats['category_id']; ?>"><?php echo $cats['category_name']; ?></option>
                                                 <?php }
                                                 
                                             ?>

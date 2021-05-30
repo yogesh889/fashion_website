@@ -2,7 +2,7 @@
 
     <body class="nav-fixed">
         <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-            <a class="navbar-brand d-none d-sm-block" href="index.html">Admin Panel</a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
+            <a class="navbar-brand d-none d-sm-block" href="index.php">Admin Panel</a><button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
             <ul class="navbar-nav align-items-center ml-auto">
                 
                 <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
@@ -86,7 +86,7 @@
                 <nav class="sidenav shadow-right sidenav-light">
                     <div class="sidenav-menu">
                         <div class="nav accordion" id="accordionSidenav">
-                            <a class="nav-link collapsed pt-4" href="index.html">
+                            <a class="nav-link collapsed pt-4" href="index.php">
                                 <div class="nav-link-icon"><i data-feather="activity"></i></div>
                                 Dashboard
                             </a>
@@ -96,28 +96,28 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" data-parent="#accordionSidenav">
                                 <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavLayout">
-                                    <a class="nav-link" href="all-post.html">All Posts</a>
-                                    <a class="nav-link" href="add-new.html">Add New Post</a>
+                                    <a class="nav-link" href="all-post.php">All Posts</a>
+                                    <a class="nav-link" href="add-new.php">Add New Post</a>
                                 </nav>
                             </div>
 
-                            <a class="nav-link" href="categories.html" ><div class="nav-link-icon"><i data-feather="chevrons-up"></i></div>
+                            <a class="nav-link" href="categories.php" ><div class="nav-link-icon"><i data-feather="chevrons-up"></i></div>
                                 Categories
                             </a>
 
-                            <a class="nav-link" href="pages.html" ><div class="nav-link-icon"><i data-feather="book-open"></i></div>
+                            <a class="nav-link" href="pages.php" ><div class="nav-link-icon"><i data-feather="book-open"></i></div>
                                 Pages
                             </a>
 
-                            <a class="nav-link" href="comments.html" ><div class="nav-link-icon"><i data-feather="package"></i></div>
+                            <a class="nav-link" href="comments.php" ><div class="nav-link-icon"><i data-feather="package"></i></div>
                                 Comments
                             </a>
 
-                            <a class="nav-link" href="messages.html" ><div class="nav-link-icon"><i data-feather="mail"></i></div>
+                            <a class="nav-link" href="messages.php" ><div class="nav-link-icon"><i data-feather="mail"></i></div>
                                 Messages
                             </a>
 
-                            <a class="nav-link" href="profile.html" ><div class="nav-link-icon"><i data-feather="user"></i></div>
+                            <a class="nav-link" href="profile.php" ><div class="nav-link-icon"><i data-feather="user"></i></div>
                                 Profile
                             </a>
                         </div>
