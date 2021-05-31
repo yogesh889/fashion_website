@@ -15,19 +15,19 @@
 <?php
     if(isset($_POST['search-keyword'])) {
         $keyword = $_POST['search-keyword'];
-        $sql = "SELECT * FROM posts WHERE post_status = :status AND post_title LIKE :title"; 
+        $sql = "SELECT * FROM posts WHERE post_status = :status AND post_title LIKE :title";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            ':status' => 'published',
+            ':status' => 'Published',
             ':title' => '%'. trim($keyword) .'%'
         ]);
         $post_found = 0;
         $count = $stmt->rowCount();
-        if($count = 0){
+        if($count == 0) {
             $post_found = 0;
         } else {
             $post_found = $count;
-        }    
+        }
     }
 ?>
 
@@ -36,43 +36,56 @@
         <div class="row mx-0">
             <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Search result for <?php echo $keyword; ?></div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">Total post found <?php echo $post_found; ?></div>
+                    <?php
+                        if (empty($keyword)) {
+                            echo "<div class='fh5co_heading fh5co_heading_border_bottom py-2 mb-4'> Post categories wise</div>";
+                        } else {
+                            echo    "
+                                        <div class='fh5co_heading fh5co_heading_border_bottom py-2 mb-4'> Search result for <?php echo $keyword; ?></div>
+                                        <div class='fh5co_heading fh5co_heading_border_bottom py-2 mb-4'>Total post found <?php echo $post_found; ?></div>
+                                    ";
+                            
+                        }            
+                    ?>
                 </div>
                 
-                <?php
-                    $sql = "SELECT * FROM posts WHERE post_status = :status AND post_title LIKE :title ORDER BY post_id DESC LIMIT 0, 6"; 
-                    $stmt = $pdo->prepare($sql);
-                    $stmt->execute([
-                         ':status' => 'published',
-                         ':title' => '%'. trim($keyword) .'%'
-                    ]);
-                    $count = $stmt->rowCount();
-                    if($count == 0 ){
-                        echo "No post found! Try again";
-                    } else {
-                        while($posts = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            $post_id = $posts['post_id'];
-                            $post_title = $posts['post_title'];
-                            $post_detail = substr($posts['post_detail'], 0, 200);
-                            $post_image = $posts['post_image'];
-                            $post_views = $posts['post_views']; ?>
+                
+                <?php 
+                    if(isset($_POST['search-keyword'])) {
+                        $keyword = $_POST['search-keyword'];
+                        $sql = "SELECT * FROM posts WHERE post_status = :status AND post_title LIKE :title ORDER BY post_id DESC LIMIT 0, 6";
+                        $stmt = $pdo->prepare($sql);
+                        $stmt->execute([
+                            ':status' => 'Published',
+                            ':title' => '%'. trim($keyword) .'%'
+                        ]);
+                        $count = $stmt->rowCount();
+                        if($count == 0) {
+                            echo "No posts found! Try again";
+                        } else {
+                            while ($posts = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                $post_id = $posts['post_id'];
+                                $post_title = $posts['post_title'];
+                                $post_detail = substr($posts['post_detail'], 0, 200);
+                                $post_image = $posts['post_image'];
+                                $post_views = $posts['post_views']; ?>
 
-                            <div class="row pb-4">
-                                <div class="col-md-5">
-                                    <div class="fh5co_hover_news_img">
-                                        <div class="fh5co_news_img"><img src="images/<?php echo $post_image; ?>" alt=""/></div>
-                                        <div></div>
+                                <div class="row pb-4">
+                                    <div class="col-md-5">
+                                        <div class="fh5co_hover_news_img">
+                                            <div class="fh5co_news_img"><img src="images/<?php echo $post_image; ?>" alt=""/></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 animate-box">
+                                        <a href="single.php" class="fh5co_magna py-2"><?php echo $post_title; ?></a>
+                                        <div class="fh5co_consectetur"><?php echo $post_detail; ?></div>
+                                        <?php echo $post_views; ?>
                                     </div>
                                 </div>
-                                <div class="col-md-7 animate-box">
-                                    <a href="single.php" class="fh5co_magna py-2"><?php echo $post_title; ?></a>
-                                    <div class="fh5co_consectetur"><?php echo $post_detail; ?></div>
-                                    <?php echo $post_views; ?>
-                                </div>
-                            </div>
 
-                        <?php }
+                            <?php }
+                        }
                     }
                 ?>
             </div>
