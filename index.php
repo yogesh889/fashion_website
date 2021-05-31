@@ -41,7 +41,8 @@
                     $post_title = $posts['post_title'];
                     $post_detail = substr($posts['post_detail'], 0, 200);
                     $post_image = $posts['post_image'];
-                    $post_views = $posts['post_views'] ?>
+                    $post_views = $posts['post_views'] 
+                    ?>
 
                     <div class="col-md-6 col-6 paddding animate-box" data-animate-effect="fadeIn">
                         <div class="fh5co_suceefh5co_height_2"><img src="images/<?php echo $post_image; ?>" alt="<?php echo $post_image ?>"/>

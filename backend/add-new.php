@@ -47,6 +47,7 @@
                     <?php
                         
                         if(isset($_POST['new-post'])) {
+                            
                             $post_title = trim($_POST['post-title']);
                             $post_status = $_POST['post-status'];
                             $post_category_id = $_POST['post-category'];
@@ -55,10 +56,12 @@
                             move_uploaded_file("{$post_photo_tmp}", "./../images/{$post_photo}");
                             $post_detail = $_POST['post-detail'];
                             $post_tags = $_POST['post-tags'];
-                            $sql = "INSERT INTO posts (post_category_id, post_title, post_detail, post_image, post_date, post_status, post_author, post_views, post_comments_counts, post_tags) VALUES (:id, :title, :detail, :image, :date, :status, :author, :views, :comment, :tags)";
+                            
+                            $sql = "INSERT INTO posts (post_title, post_detail, post_image, post_date, post_status, post_author, post_views, post_comment_count, post_tags, post_category_id, ) VALUES (:title, :detail, :image, :date, :status, :author, :views, :comment, :tags, :id)";
                             $stmt = $pdo->prepare($sql);
+                            
                             $stmt -> execute([
-                                ':id' => $post_category_id,
+
                                 ':title' => $post_title,
                                 ':detail' => $post_detail,
                                 ':image' => $post_photo,
@@ -67,9 +70,11 @@
                                 ':author' => $user_name,
                                 ':views' => 0,
                                 ':comment' => 0,
-                                ':tags' => $post_tags
+                                ':tags' => $post_tags,
+                                ':id' => $post_category_id
                             ]);
-                            // header("Location: all-post.php");
+                            
+                            header("Location: all-post.php");
 
                         } 
                     ?>

@@ -88,7 +88,7 @@
                     <div id="myOverlay" class="overlay">
                         <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
                         <div class="overlay-content">
-                            <form action="search.php" method="POST">
+                            <form action="blog.php" method="POST">
                             <input name="search-keyword" type="text" placeholder="Search.." name="search">
                             <div type="submit"><i class="openBtn fa fa-search"></i>		</div>
                             </form>
