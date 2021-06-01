@@ -8,7 +8,8 @@
 #element2 {display:inline-block; width:auto; } 
 .signin {border-radius: 20px; margin-top: -32px;}
 .signup {border-radius: 20px; margin-top: -32px;}
-.signout {border-radius: 20px}
+.signout {border-radius: 20px; transition: 2s border;}
+.signinupout{margin-top: 20px}
 
 
 /* ------------------------------------------- */
@@ -138,68 +139,70 @@
                     <a href="https://fb.com/fh5co" target="_blank" class="fh5co_display_table"><div class="fh5co_verticle_middle"><i class="fa fa-facebook"></i></div></a>
                 </div>
                 <!--<div class="d-inline-block text-center"><img src="images/country.png" alt="img" class="fh5co_country_width"/></div>-->
-                <?php 
-                
-                    if(isset($_POST['reset'])) {
+                <div class="signinupout col-md-12">
+                    <?php 
+                    
+                        if(isset($_POST['reset'])) {
 
-                        if(isset($_SESSION['login'])) {
-                            session_destroy();
-                            unset($_SESSION['login']);
-                            unset($_SESSION['user_name']);
-                            unset($_SESSION['user_role']);
+                            if(isset($_SESSION['login'])) {
+                                session_destroy();
+                                unset($_SESSION['login']);
+                                unset($_SESSION['user_name']);
+                                unset($_SESSION['user_role']);
+                            }
+
+                            if(isset($_COOKIE['_uid_']) && isset($_COOKIE['_uiid_'])) {
+                                setcookie('_uid_', '', time() - 60 * 60 * 24, '/', '', '', true);
+                                setcookie('_uiid_', '', time() - 60 * 60 * 24, '/', '', '', true);
+                            }
+
+                            header("Location: {$curr_page}");
+
                         }
-
-                        if(isset($_COOKIE['_uid_']) && isset($_COOKIE['_uiid_'])) {
-                            setcookie('_uid_', '', time() - 60 * 60 * 24, '/', '', '', true);
-                            setcookie('_uiid_', '', time() - 60 * 60 * 24, '/', '', '', true);
-                        }
-
-                        header("Location: {$curr_page}");
-
-                    }
-
-                    if(isset($_SESSION['login'])) { ?>
-                        <form action="../fashion_website/signout.php" method="POST">
-                            <input type="text" name="cpage" value="<?php echo $curr_page; ?>" hidden>
-                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4 signout">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
-                        </form>
-                    <?php } else {
-                        if(!isset($_COOKIE['_uid_']) && !isset($_COOKIE['_uiid_'])) {
-                            ?>
-                            <form id="element1" action="./backend/signin.php" method="POST">
-                            <input type="text" name="cpagesin" value="<?php echo $curr_page; ?>" hidden>
-                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4 signin" >Sign in</button>
+                        if(isset($_SESSION['login'])) { ?>
+                            <form action="../fashion_website/signout.php" method="POST">
+                                <input type="text" name="cpage" value="<?php echo $curr_page; ?>" hidden>
+                                <button class="btn-teal btn rounded-pill px-4 ml-lg-4 signout">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
                             </form>
+                        <?php } else {
+                            if(!isset($_COOKIE['_uid_']) && !isset($_COOKIE['_uiid_'])) {
+                                ?>
+                                <form id="element1" action="./backend/signin.php" method="POST">
+                                <input type="text" name="cpagesin" value="<?php echo $curr_page; ?>" hidden>
+                                <button class="btn-teal btn rounded-pill px-4 ml-lg-4 signin" >Sign in</button>
+                                </form>
+                                
+                                <form id="element2" action="./backend/signup.php" method="POST">
+                                <input type="text" name="cpagesup" value="<?php echo $curr_page; ?>" hidden>
+                                <button class="btn-teal btn rounded-pill px-4 ml-lg-4 signup" >Sign up</button>                                              
+                                </form>
+                                <?php
+                            } else {
+                                $user_id = base64_decode($_COOKIE['_uid_']);
+                                $user_nickname = base64_decode($_COOKIE['_uiid_']);
+                                $sql = "SELECT * FROM users WHERE user_id = :id AND user_nickname = :nickname";
+                                $stmt = $pdo->prepare($sql);
+                                $stmt->execute([
+                                    ':id' => $user_id,
+                                    ':nickname' => $user_nickname
+                                ]);
+                                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                                $user_name = $user['user_name'];
+                                $user_role = $user['user_role'];
+                                $_SESSION['user_name'] = $user_nickname;
+                                $_SESSION['user_role'] = $user_role;
+                                $_SESSION['login'] = 'success';
+                                $_SESSION['user_id'] = $user_id;
+                                $_SESSION['user_nickname'] = $user_nickname; ?>
+                                <form action="<?php $curr_page; ?>" method="POST">
+                                    <button class="btn-teal btn rounded-pill px-4 ml-lg-4">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
+                                </form>
+                            <?php }
                             
-                            <form id="element2" action="./backend/signup.php" method="POST">
-                            <input type="text" name="cpagesup" value="<?php echo $curr_page; ?>" hidden>
-                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4 signup" >Sign up</button>                                              
-                            </form>
-                            <?php
-                        } else {
-                            $user_id = base64_decode($_COOKIE['_uid_']);
-                            $user_nickname = base64_decode($_COOKIE['_uiid_']);
-                            $sql = "SELECT * FROM users WHERE user_id = :id AND user_nickname = :nickname";
-                            $stmt = $pdo->prepare($sql);
-                            $stmt->execute([
-                                ':id' => $user_id,
-                                ':nickname' => $user_nickname
-                            ]);
-                            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                            $user_name = $user['user_name'];
-                            $user_role = $user['user_role'];
-                            $_SESSION['user_name'] = $user_nickname;
-                            $_SESSION['user_role'] = $user_role;
-                            $_SESSION['login'] = 'success';
-                            $_SESSION['user_id'] = $user_id;
-                            $_SESSION['user_nickname'] = $user_nickname; ?>
-                            <form action="<?php $curr_page; ?>" method="POST">
-                                <button class="btn-teal btn rounded-pill px-4 ml-lg-4">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
-                            </form>
-                        <?php }
-                        
-                    }
-                ?>
+                        }
+                    ?>
+                </div>
+
                 <div class="clearfix"></div>
             </div>
         </div>

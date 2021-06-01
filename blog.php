@@ -41,8 +41,8 @@
                             echo " <div class='fh5co_heading fh5co_heading_border_bottom py-2 mb-4'> Post categories wise</div> ";
                         } else {
                             echo    "
-                                        <div class='fh5co_heading fh5co_heading_border_bottom py-2 mb-4'> Search result for $keyword</div>
-                                        <div class='fh5co_heading fh5co_heading_border_bottom py-2 mb-4'>Total post found $post_found</div>
+                                        <div class='text-center fh5co_heading fh5co_heading_border_bottom py-2 mb-4'> Search result for $keyword</div>
+                                        <div class='text-center fh5co_heading fh5co_heading_border_bottom py-2 mb-4'>Total post found $post_found</div>
                                     ";
                             
                         }            
