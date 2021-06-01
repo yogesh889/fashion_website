@@ -103,13 +103,13 @@
 <div class="container-fluid fh5co_footer_right_reserved">
     <div class="container">
         <div class="row  ">
-            <div class="col-12 col-md-2 py-4 Reserved"><a href="/lalit_fashion_website/privacy_policy.php" title="Privacy Policy">Privacy Policy</a> </div>
-            <div class="col-12 col-md-2 py-4 Reserved"><a href="/lalit_fashion_website/terms_and_condition.php" title="terms_and_condition">Terms and condition</a> </div>
+            <div class="col-12 col-md-2 py-4 Reserved"><a href="/fashion_website/privacy_policy.php" title="Privacy Policy">Privacy Policy</a> </div>
+            <div class="col-12 col-md-2 py-4 Reserved"><a href="/fashion_website/terms_and_condition.php" title="terms_and_condition">Terms and condition</a> </div>
             <div class="col-12 col-md-8 spdp_right py-4">
-                <a href="/lalit_fashion_website/index.php" class="footer_last_part_menu">Home</a>
-                <a href="/lalit_fashion_website/about_us.php" class="footer_last_part_menu">About</a>
-                <a href="/lalit_fashion_website/Contact_us.php" class="footer_last_part_menu">Contact</a>
-                <a href="/lalit_fashion_website/blog.php" class="footer_last_part_menu">Latest News</a></div>
+                <a href="/fashion_website/index.php" class="footer_last_part_menu">Home</a>
+                <a href="/fashion_website/about_us.php" class="footer_last_part_menu">About</a>
+                <a href="/fashion_website/Contact_us.php" class="footer_last_part_menu">Contact</a>
+                <a href="/fashion_website/blog.php" class="footer_last_part_menu">Latest News</a></div>
         </div>
     </div>
 </div>

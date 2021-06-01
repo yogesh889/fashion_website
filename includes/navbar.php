@@ -1,8 +1,24 @@
 
 <link href=".//css/style_1.css" rel="stylesheet" type="text/css"/>
 <style>
+/* ---------SIGNIN SIGNUP SIGNOUT BUTTON CSS--------- */
+
+
 #element1 {display:inline-block; width:auto; } 
 #element2 {display:inline-block; width:auto; } 
+.signin {border-radius: 20px; margin-top: -32px;}
+.signup {border-radius: 20px; margin-top: -32px;}
+.signout {border-radius: 20px}
+
+
+/* ------------------------------------------- */
+
+
+
+
+
+/* ---search button css--- */
+
 .openBtn {
   background: none;
   border: none;
@@ -75,6 +91,8 @@
 .overlay .openBtn:hover {
   background: #bbb;
 }
+
+/* --------------------------------- */
 </style>
 
 <div class="container-fluid">
@@ -143,19 +161,19 @@
                     if(isset($_SESSION['login'])) { ?>
                         <form action="../fashion_website/signout.php" method="POST">
                             <input type="text" name="cpage" value="<?php echo $curr_page; ?>" hidden>
-                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
+                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4 signout">Sign out (<?php echo $_SESSION['user_name']; ?>)</button>
                         </form>
                     <?php } else {
                         if(!isset($_COOKIE['_uid_']) && !isset($_COOKIE['_uiid_'])) {
                             ?>
                             <form id="element1" action="./backend/signin.php" method="POST">
                             <input type="text" name="cpagesin" value="<?php echo $curr_page; ?>" hidden>
-                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4" >Sign in</button>
+                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4 signin" >Sign in</button>
                             </form>
                             
                             <form id="element2" action="./backend/signup.php" method="POST">
                             <input type="text" name="cpagesup" value="<?php echo $curr_page; ?>" hidden>
-                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4" >Sign up</button>                                              
+                            <button class="btn-teal btn rounded-pill px-4 ml-lg-4 signup" >Sign up</button>                                              
                             </form>
                             <?php
                         } else {
