@@ -58,7 +58,8 @@
                             
                             $post_tags = $_POST['post-tags'];
                             
-                            $sql = "INSERT INTO posts (post_title, post_detail, post_image, post_date, post_status, post_author, post_views, post_comment_count, post_tags, post_category_id, ) VALUES (:title, :detail, :image, :date, :status, :author, :views, :comment, :tags, :id)";
+                            $sql = "INSERT INTO posts (post_title, post_detail, post_image, post_date, post_status, post_author, post_views, post_comment_count, post_tags, post_category_id) VALUES (:title, :detail, :image, :date, :status, :author, :views, :comment, :tags, :id)";
+                            // $sql = "INSERT INTO posts (post_title, post_detail) VALUES (:title, :detail)";
                             $stmt = $pdo->prepare($sql);
                             
                             $stmt -> execute([
@@ -118,17 +119,7 @@
                                         <label for="post-title">Choose photo:</label>
                                         <input name="post-photo" class="form-control" id="post-title" type="file" />
                                     </div>
-                                    <?php echo $post_title ?>
-                                    <?php echo $post_status ?>
-                                    <?php echo $post_detail ?>
-                                    <?php echo $post_category ?>
-                                    <?php echo $post_date ?>
-                                    <?php echo $post_author ?>
-                                    <?php echo $post_views ?>
-                                    <?php echo $post_comment_count ?>
-                                    <?php echo $post_tags ?>
-                                    <?php echo $post_category_id ?>
-                                    <?php echo $post_image ?>
+                                    
 
 
 
