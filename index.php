@@ -1,5 +1,3 @@
-
-
 <?php $current_page = "home"; ?>
 
 
@@ -249,12 +247,14 @@
 <div class="container-fluid pb-4 pt-4 paddding">
     <div class="container paddding">
         <?php
-            $sql = "SELECT * FROM posts WHERE post_status = :status";
+            $sql = "SELECT * FROM posts WHERE post_status =:status ";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
                 ':status' => 'published'
             ]);
             $post_count = $stmt->rowCount();
+            echo "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
+            echo $post_count;
             $post_per_page = 3;
             if(isset($_GET['page'])){
                 $page = $_GET['page'];
@@ -268,6 +268,8 @@
                 $page = 1;
                 $page_id = 0;
             }
+            echo "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk===";
+            echo ceil($post_count / $post_per_page);
             $total_pager = ceil($post_count / $post_per_page);
         ?>
         <div class="row mx-0">
@@ -277,7 +279,7 @@
                 </div>
 
                 <?php
-                    $sql = "SELECT * FROM posts WHERE post_status = :status ORDER BY post_id DESC LIMIT $page_id, $post_per_page";
+                    $sql = "SELECT * FROM posts WHERE post_status = :status ORDER BY post_id DESC LIMIT 0,5";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([
                         ':status' => 'published'
@@ -386,17 +388,22 @@
                     ?>
                     
                     <?php
+                    
                         if(isset($_GET['page'])){
                             $active = $_GET['page'];
                         } else {
                             $active = 1;
                         }
+                        // echo "aaaaaaaaaaaaaaaaaaaaa==";
+                    // echo $active;
                         for($i = 1; $i <= $total_pager; $i++) {
+
                             if($i == $active){
                                 echo '<a href="index.php?page=' . $i . '" class="btn_pagging active">' . $i . ' </a>';
                             } else {
                                 echo '<a href="index.php?page=' . $i . '" class="btn_pagging">' . $i . ' </a>';
                             }
+
                             
                         }
                     ?>
@@ -414,7 +421,7 @@
                     ?>
                     
                     </div>
-                </div>
+                </div> 
             <?php } 
         ?>
         
