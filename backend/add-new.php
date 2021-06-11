@@ -49,12 +49,13 @@
                         if(isset($_POST['new-post'])) {
                             
                             $post_title = trim($_POST['post-title']);
+                            $post_detail = $_POST['post-detail'];
                             $post_status = $_POST['post-status'];
                             $post_category_id = $_POST['post-category'];
                             $post_photo = $_FILES['post-photo']['name'];
                             $post_photo_tmp = $_FILES['post-photo']['tmp_name'];
                             move_uploaded_file("{$post_photo_tmp}", "./../images/{$post_photo}");
-                            $post_detail = $_POST['post-detail'];
+                            
                             $post_tags = $_POST['post-tags'];
                             
                             $sql = "INSERT INTO posts (post_title, post_detail, post_image, post_date, post_status, post_author, post_views, post_comment_count, post_tags, post_category_id, ) VALUES (:title, :detail, :image, :date, :status, :author, :views, :comment, :tags, :id)";
@@ -74,7 +75,7 @@
                                 ':id' => $post_category_id
                             ]);
                             
-                            header("Location: all-post.php");
+                            // header("Location: all-post.php");
 
                         } 
                     ?>
@@ -117,6 +118,19 @@
                                         <label for="post-title">Choose photo:</label>
                                         <input name="post-photo" class="form-control" id="post-title" type="file" />
                                     </div>
+                                    <?php echo $post_title ?>
+                                    <?php echo $post_status ?>
+                                    <?php echo $post_detail ?>
+                                    <?php echo $post_category ?>
+                                    <?php echo $post_date ?>
+                                    <?php echo $post_author ?>
+                                    <?php echo $post_views ?>
+                                    <?php echo $post_comment_count ?>
+                                    <?php echo $post_tags ?>
+                                    <?php echo $post_category_id ?>
+                                    <?php echo $post_image ?>
+
+
 
                                     <div class="form-group">
                                         <label for="post-content">Post Details:</label>
